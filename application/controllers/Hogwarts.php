@@ -13,34 +13,21 @@ class Hogwarts extends Application
 	/**
 	 * Homepage for our app
 	 */
-	public function index()
-	{
-		// this is the view we want shown
-		$this->data['pagebody'] = 'homepage';
 
-		// build the list of authors, to pass on to our view
-		$source = $this->quotes->all();
-		$authors = array ();
-		foreach ($source as $record)
-		{
-			$authors[] = array ('who' => $record['who'],
-                                            'mug' => $record['mug'],
-                                            'href' => $record['where']                                            
-                                            );
-		}
-		$this->data['authors'] = $authors;
-
-		$this->render();
-	}
-        
-        public function shucks(){
+    public function index(){
             
-            // this is the view we want shown
-            $this->data['pagebody'] = 'justone';
+            $this->data['pagebody'] = 'homepage';
             
-            $this->data = array_merge($this->data, $this->quotes->get(2));
-
+            $data = array();
+            $countPatrs = $this->parts->count();
+            $countBots = $this->robot->count();
+            $countSpent = $this->histories->getSpent();
+            $countEarned = $this->histories->getEarned();
+            $data = array('parts'=> $countPatrs, 'bots' => $countBots, 'spent' => $countSpent
+                , 'earned' => $countEarned);
+            $this->data = array_merge($this->data, $data);
             $this->render();
-        }
-
+		
+	}
 }
+
