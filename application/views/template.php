@@ -18,12 +18,15 @@ if (!defined('APPPATH'))
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
         <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="/assets/css/CherryRobot.css"/>
     </head>
     <body>
         <div class="container">
+			{pagetitle}
             <div class="navbar">
                 <div class="navbar-inner">
-                    {menubar} </div>
+                    {menubar} 
+				</div>
             </div>           
             <div id="content">
                 {content}
